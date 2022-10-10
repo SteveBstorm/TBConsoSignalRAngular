@@ -1,0 +1,12 @@
+<p>chat works!</p>
+
+<div>
+  Votre nom : <input [(ngModel)]="author"><br />
+  Votre message : <input type="text" [(ngModel)]="newmessage">
+  <button (click)="sendMessage()">Envoi</button>
+</div>
+<div style="border : 2px black solid;">
+  <p *ngFor="let m of messageList">
+    <strong>{{m.author}}</strong> : {{m.content}}
+  </p>
+</div>
