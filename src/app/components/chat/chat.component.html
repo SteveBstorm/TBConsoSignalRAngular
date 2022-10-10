@@ -1,14 +1,32 @@
 <p>chat works!</p>
+<div class="content">
+  <div class="group">
+    <ul>
+      <li *ngFor="let g of groupList">
+        {{g.groupName}} <button (click)="addToGroup(g.groupName)">Join</button>
+      </li>
+    </ul>
 
-<div>
-  Votre nom : <input [(ngModel)]="author"><br />
-  Votre message : <input type="text" [(ngModel)]="newmessage">
-  <button (click)="sendMessage()">Envoi</button>
+  </div>
+  <div class="chat">
+  <div>
+    Votre nom : <input [(ngModel)]="author"><br />
+    Choisir groupe :
+    <select [(ngModel)]="groupname">
+      <option *ngFor="let g of joinedGroup" [value]="g">
+        {{g}}
+      </option>
+    </select>
+    Votre message : <input type="text" [(ngModel)]="newmessage">
+    <button (click)="sendToGroup()">Envoi</button>
+  </div>
+  <div style="border : 2px black solid;">
+    <p *ngFor="let m of messageList">
+      <strong>{{m.author}}</strong> : {{m.content}}
+    </p>
+  </div>
 </div>
-<div style="border : 2px black solid;">
-  <p *ngFor="let m of messageList">
-    <strong>{{m.author}}</strong> : {{m.content}}
-  </p>
 </div>
 
-<button (click)="joinGroup()">Rejoindre group1</button>
+
+

@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Message } from '../components/chat/chat.component';
-
+import { Group, Message } from '../models/group.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -15,5 +14,9 @@ export class ChatService {
 
   getMessage(): Observable<Message[]> {
     return this.client.get<Message[]>(this.url)
+  }
+
+  getGroupList() : Observable<Group[]> {
+    return this.client.get<Group[]>(this.url+"/group")
   }
 }
