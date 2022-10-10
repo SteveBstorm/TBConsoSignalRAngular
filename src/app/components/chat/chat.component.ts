@@ -46,6 +46,11 @@ export class ChatComponent implements OnInit {
     this.newmessage = ""
   }
 
+  joinGroup() {
+    this.hub.send("JoinGroup", "groupe1", this.author)
+    this.hub.on("togroup", (data : Message) => {this.messageList.push(data)})
+  }
+
 }
 //npm install @microsoft/signalr --save
 
